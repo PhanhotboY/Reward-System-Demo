@@ -1,0 +1,93 @@
+nav.sidebar {
+  position: fixed;
+  left: 0;
+  width: 250px;
+  bottom: 0;
+  top: 60px;
+  background-color: #fafafa;
+  border-right: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+nav.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+nav.sidebar li {
+  margin-bottom: 1rem;
+  justify-self: center;
+  align-self: center;
+}
+
+/* Container for the login form */
+.form-container {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* form form heading */
+.form-heading {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Input fields */
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* form button */
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* form button hover effect */
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+/* Error message */
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #eee;
+}

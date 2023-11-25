@@ -1,0 +1,14 @@
+extends ../secretary.pug
+
+append content
+        .form-container
+            .form-heading #{type}
+            form(action="/secretary/redeem", method="POST")
+                label(for="swag") Select Swag:
+                select.form-select#swag(name="swagId") 
+                    each opt in data 
+                        option(value=opt.id) #{opt.name} - #{opt.value} RWT
+                br
+                input(type="hidden", name="employeeId", value=employeeId)
+                
+                input.submit-button(type="submit", value="submit")

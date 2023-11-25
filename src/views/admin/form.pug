@@ -1,0 +1,31 @@
+extends ../admin.pug
+
+append content
+        .form-container
+            if type == 'issue token'
+                .form-heading(style="text-transform: capitalize;") Issue token
+                form(action="/admin/issue-token", method="POST")
+                    label(for="address") Address:
+                    select#address.form-input(name="address") 
+                        each emp in employeeList
+                            option(value=emp.address) #{emp.user_name} - #{emp.address}
+                    br
+                    label(for="type") Type:
+                    select#type.form-input(name="type") 
+                        option(value="reward") Reward token
+                        option(value="penalty") Penalty token
+                    br
+                    label(for="amount") Amount:
+                    input#amount.form-input(type="number", name="amount", placeholder="1000")
+                    
+                    input.submit-button(type="submit", value="submit")
+            else
+                .form-heading(style="text-transform: capitalize;") Add #{type}
+                form(action="/admin/" + type, method="POST")
+                    label(for="name") Name:
+                    input#name.form-input(type="text", name="name", placeholder="Hello world...")
+                    br
+                    label(for="value") Value:
+                    input#value.form-input(type="number", name="value", placeholder="1000")
+                    
+                    input.submit-button(type="submit", value="submit")

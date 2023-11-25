@@ -1,0 +1,25 @@
+extends ../secretary.pug
+
+append content
+    if data[0]
+        table 
+            tr 
+                each val, key in data[0]
+                    unless key == "id"
+                        th #{key}
+                unless type == "employees"
+                    th
+            each item in data
+                tr
+                    each val, key in item 
+                        unless key == "id" 
+                            td 
+                                a(href="./" + type + "/" + item.id) #{val}
+                    unless type == "employees"
+                        td 
+                            form(action="/secretary/redeem", method="POST")
+                                input(type="hidden", name="requestId", value=item.id)
+                                button(type="submit") Process
+        if type == "employees"
+            form(action="/secretary/balance", method="POST", style="margin: auto; margin-top: 20px; width: 200px")
+                button.submit-button(type="submit") Update balance

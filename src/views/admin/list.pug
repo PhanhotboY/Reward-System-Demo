@@ -1,0 +1,16 @@
+extends ../admin.pug
+
+append content
+    if data[0]
+        table 
+            tr 
+                each val, key in data[0]
+                    unless key == "id"
+                        th #{key}
+
+            each item in data
+                tr
+                    each val, key in item 
+                        unless key == "id" 
+                            td 
+                                a(href="./" + type + "/" + item.id) #{val}

@@ -1,0 +1,23 @@
+extends ../employee.pug
+
+append content
+    if data[0]
+        table 
+            tr 
+                each val, key in data[0]
+                    unless key == "id"
+                        th #{key}
+                if type == 'swags'
+                    th
+            each item in data
+                tr
+                    each val, key in item 
+                        unless key == "id" 
+                            td 
+                                a(href="./" + type + "/" + item.id) #{val}
+                    if type == 'swags'
+                        td 
+                            form(action="/employee/redeem", method="POST")
+                                input(type="hidden", name="swagId", value=item.id)
+                                input(type="hidden", name="employeeId", value=employeeId)
+                                input(type="submit", value="Redeem")

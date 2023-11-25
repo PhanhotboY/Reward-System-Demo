@@ -1,0 +1,26 @@
+header
+      .logo
+        img(src='/images/logo.png', alt='Company Logo')
+      nav
+        ul
+          li
+            a(href='/admin') Admin
+          li
+            a(href='/secretary') Secretary
+          li
+            a(href='/employee') Employee
+          //- li
+          //-   a(href='/login') Login
+      .user-info
+        span.balance
+            div RWT
+            | #{balance.rewardToken}
+
+        span.balance
+            div(style='background-color: red;') PET
+            | #{balance.penaltyToken}
+
+        span.balance
+            div(style='background-color: blue;') RET
+            | #{balance.reputationToken}
+        img.avatar(src='/images/avatar.png', alt='User Avatar')

@@ -1,0 +1,21 @@
+extends index.pug 
+
+append head 
+  link(rel="stylesheet", href="/css/dashboard.css")
+
+block dashboard
+  nav.sidebar 
+    ul 
+      li 
+        a(href="/admin/achievements") Achievement list
+      li 
+        a(href="/admin/achievements/add") Add achievement
+      li
+        a(href="/admin/swags") Swag list
+      li  
+        a(href="/admin/swags/add") Add swag
+      li
+        a(href="./issue-token") Issue token
+        
+  h2 Admin Dashboard
+  block content

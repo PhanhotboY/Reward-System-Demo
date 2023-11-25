@@ -1,0 +1,26 @@
+# Exclude node_modules directory
+
+node_modules
+
+# Exclude any build artifacts or compiled code
+
+dist/
+build/
+bin/
+
+# Exclude any temporary or cache files
+
+_.tmp
+_.log
+\*.swp
+.DS_Store
+
+# Exclude any editor-specific files or directories
+
+.vscode/
+.idea/
+
+# Exclude any version control system files or directories
+
+.git/
+.svn/
