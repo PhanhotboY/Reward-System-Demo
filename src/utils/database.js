@@ -37,6 +37,9 @@ async function deleteUserById(userId) {
 }
 
 async function deleteAllEmployees() {
+  await pool.query('DELETE FROM balances');
+  await pool.query('DELETE FROM requests');
+
   let result = await pool.query('DELETE FROM users WHERE role = $1', ['employee']);
   return returnSingle(result);
 }
@@ -85,6 +88,11 @@ async function getSwagList() {
   return returnMany(result);
 }
 
+async function findSwagByName(name) {
+  let result = await pool.query('SELECT * FROM swags WHERE name=$1', [name]);
+  return returnSingle(result);
+}
+
 async function getSwagById(id) {
   let result = await pool.query('SELECT * FROM swags WHERE id=$1', [id]);
   return returnSingle(result);
@@ -126,7 +134,7 @@ async function completeRedeemRequest(requestid, iscomplete) {
 
 async function getRedeemRequestById(requestId) {
   let result = await pool.query(
-    'SELECT r.id, r.employee_id, u.user_name, r.swag_id, s.name, ' +
+    'SELECT r.id, r.employee_id, u.user_name, u.address, r.swag_id, s.name, s.value,' +
       ' r.completed_at, r.is_completed ' +
       ' FROM requests r ' +
       ' join users u on u.id = r.employee_id ' +
@@ -174,8 +182,14 @@ async function getRequestsListForEmployee(employeeId) {
   return returnMany(result);
 }
 
+async function closePool() {
+  await pool.end();
+  console.log('Closed database connection!');
+}
+
 module.exports = {
   ping,
+  closePool,
   getUserById,
   getUserByUsername,
   getUserByAddress,
@@ -184,6 +198,7 @@ module.exports = {
   getAchievements,
   addSwag,
   getSwagList,
+  findSwagByName,
   getSwagById,
   deleteAllEmployees,
   getEmployeeList,

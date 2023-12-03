@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --exit src/test/*.js",
     "start": "node --trace-warnings --watch-path src --watch src/index.js",
     "test:db": "node src/testdb.js",
     "refreshUser": "node src/refreshUser.js"
@@ -23,7 +23,8 @@
     "hardhat-deploy-ethers": "^0.4.1",
     "nodemon": "^3.0.1",
     "pg": "^8.11.3",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "supertest": "^6.3.3"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",

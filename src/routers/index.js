@@ -4,9 +4,11 @@ const adminRouter = require('./admin.router');
 const loginRouter = require('./login.router');
 const employeeRouter = require('./employee.router');
 const secretaryRouter = require('./secretary.router');
+const testRouter = require('./test.router');
 
 const router = express.Router();
 
+router.use('/test', testRouter);
 router.use('/login', loginRouter);
 router.use('/admin', adminRouter);
 router.use('/employee', employeeRouter);

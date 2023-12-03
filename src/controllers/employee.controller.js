@@ -10,6 +10,7 @@ const {
   getUserById,
   getSwagById,
   addRedeemRequest,
+  updateTokenBalance,
 } = require('../utils/database');
 
 const apiUrl = process.env.API_URL || 'http://localhost:3000';
@@ -24,40 +25,13 @@ const employeeController = {
   async requestRedeemSwag(req, res) {
     const { employeeId, swagId } = req.body;
 
-    const employee = await getUserById(employeeId);
+    // fetch swag from database
+    const swag = await getSwagById(swagId);
+    if (!swag) throw new Error('Swag does not exists');
 
-    await fetch(`${apiUrl}/employee/${getAddress(employee.address.toLowerCase())}/balance`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then(async (balance) => {
-        const { rewardToken, penaltyToken } = balance;
-        const tokenBalance = rewardToken - penaltyToken;
+    await addRedeemRequest({ employeeId, swagId });
 
-        if (tokenBalance <= 0) {
-          return res.json({
-            message: 'Not enough tokens to redeem swag',
-          });
-        }
-
-        // fetch swag from database
-        const swag = await getSwagById(swagId);
-        if (!swag) throw new Error('Swag does not exists');
-
-        // compare tokenBalance with swag price
-        if (tokenBalance < swag.value) throw new Error('Insufficient balance');
-
-        // emit swag redeeming request
-        await addRedeemRequest({ employeeId, swagId });
-
-        return res.redirect('/employee');
-      })
-      .catch((err) => {
-        throw new Error(err);
-      });
+    return res.redirect('/employee');
   },
 
   async getRequestList(req, res) {
@@ -111,12 +85,12 @@ const employeeController = {
     const { employeeId } = req.params;
 
     const employee = await getUserById(employeeId);
-    console.log(employee);
+
     req.user = {
       balance: {
-        rewardToken: formatEther(employee.reward_token || 0),
-        penaltyToken: formatEther(employee.penalty_token || 0),
-        reputationToken: formatEther(employee.reputation_token || 0),
+        rewardToken: employee.reward_token || 0,
+        penaltyToken: employee.penalty_token || 0,
+        reputationToken: employee.reputation_token || 0,
       },
     };
     console.log(req.user);

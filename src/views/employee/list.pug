@@ -13,8 +13,7 @@ append content
                 tr
                     each val, key in item 
                         unless key == "id" 
-                            td 
-                                a(href="./" + type + "/" + item.id) #{val}
+                            td #{val}
                     if type == 'swags'
                         td 
                             form(action="/employee/redeem", method="POST")

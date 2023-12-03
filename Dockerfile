@@ -14,7 +14,7 @@ RUN yarn
 COPY . .
 
 # Deploy the smart contracts
-RUN yarn hardhat deploy --network localhost
+# RUN yarn hardhat deploy --network localhost
 
 # Expose the port on which your web server will listen
 EXPOSE 3000

@@ -28,13 +28,10 @@ CREATE TABLE IF NOT EXISTS  public.achievements(
 	"value" INT);
 INSERT INTO public.achievements("name", "value")
 VALUES
-	('SIG/TWG/SC Meeting Participation', 10),
-	('SIG/TWG/SC Meeting Chair', 5),
-	('SIG/TWG/SC Meeting Written Contribution', 100),
-	('SIG/TWG/SC Meeting  Main Editor of a Written Contribution', 200),
-	('SIG/TWG/SC EEA Project Contributions (Development or Compute)',	1000),
-	('SIG/TWG/SC EEA Project Manager or Highly Specialized Resource',		2000),
-	('SIG/TWG/SC EEA Project Financial or Resource Sponsor', 	10000)	
+	('Meeting Participation', 10),
+	('Meeting Chair', 5),
+	('Meeting Written Contribution', 10),
+	('Meeting  Main Editor of a Written Contribution', 20),
 ;
 
 --DROP TABLE public.list_redeemfor
@@ -45,9 +42,8 @@ CREATE TABLE IF NOT EXISTS public.swags(
 	CONSTRAINT swags_pkey PRIMARY KEY (id));
 INSERT INTO public.swags("name", "value")
 VALUES
-	( 'EEA Shirt ', 10),
-	( 'Dinner with Ron', 100),
-	( 'Marley Autographed Shades', 1000)
+	( 'Shirt ', 10),
+	( 'Dinner with crush', 100)
 ;
 
 --DROP TABLE public.request

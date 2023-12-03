@@ -3,12 +3,18 @@ extends ../secretary.pug
 append content
         .form-container
             .form-heading #{type}
-            form(action="/secretary/redeem", method="POST")
-                label(for="swag") Select Swag:
-                select.form-select#swag(name="swagId") 
-                    each opt in data 
-                        option(value=opt.id) #{opt.name} - #{opt.value} RWT
+            form(action="/secretary/issue-token", method="POST")
+                label(for="employee") Select Employee:
+                select.form-select#employee(name="employeeId") 
+                    each emp in data 
+                        option(value=emp.id) #{emp.user_name} - #{emp.address}
                 br
-                input(type="hidden", name="employeeId", value=employeeId)
-                
+                label(for="tokenType") Select Token Type:
+                select.form-select#tokenType(name="tokenType")
+                    option(value="rewardToken") Reward token
+                    option(value="penaltyToken") Penalty token
+                br
+                label(for="tokenAmount") Token Amount:
+                input.form-input#tokenAmount(type="number", name="amount", min="1", max="10000" required)
+
                 input.submit-button(type="submit", value="submit")

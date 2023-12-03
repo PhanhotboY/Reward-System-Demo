@@ -13,8 +13,7 @@ append content
                 tr
                     each val, key in item 
                         unless key == "id" 
-                            td 
-                                a(href="./" + type + "/" + item.id) #{val}
+                            td #{val}
                     unless type == "employees"
                         td 
                             form(action="/secretary/redeem", method="POST")
@@ -23,3 +22,5 @@ append content
         if type == "employees"
             form(action="/secretary/balance", method="POST", style="margin: auto; margin-top: 20px; width: 200px")
                 button.submit-button(type="submit") Update balance
+            form(action="/secretary/renewal", method="POST", style="margin: auto; margin-top: 20px; width: 200px")
+                button.submit-button(type="submit") Renewal

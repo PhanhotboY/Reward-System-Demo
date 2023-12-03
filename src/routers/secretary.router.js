@@ -14,6 +14,10 @@ secretaryRouter.get('/employees', secretaryController.getEmployeeList);
 secretaryRouter.post('/redeem', secretaryController.processRedeemRequest);
 secretaryRouter.post('/balance', secretaryController.updateTokenBalance);
 
+secretaryRouter.get('/issue-token', secretaryController.issueTokenForm);
+secretaryRouter.post('/issue-token', secretaryController.issueToken);
+
+secretaryRouter.post('/renewal', secretaryController.renewal);
 secretaryRouter.get('/', (req, res) => res.redirect('/secretary/requests'));
 
 module.exports = secretaryRouter;

@@ -16,6 +16,6 @@ employeeRouter.get('/:employeeId/swags/:swagId', employeeController.getSwag);
 employeeRouter.get('/:employeeId/swags', employeeController.getSwagList);
 employeeRouter.get('/:employeeId/balance/', employeeController.getBalance);
 
-employeeRouter.get('/', (req, res) => res.redirect('/employee/100/requests'));
+employeeRouter.get('/', (req, res) => res.redirect('/employee/102/requests'));
 
 module.exports = employeeRouter;

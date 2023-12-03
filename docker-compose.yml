@@ -13,6 +13,7 @@ services:
       - ./src:/home/node/reward-system-demo/src
       - ./.env:/home/node/reward-system-demo/.env
       - ./public:/home/node/reward-system-demo/public
+    command: sh -c "yarn refreshUser && yarn start"
     depends_on:
       - postgres
 
